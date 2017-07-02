@@ -1,0 +1,91 @@
+$red: #ed254e;
+$yellow:#f9dc5c;
+$green:#c2eabd;
+$blue:#011936;
+$light-grey: #D3D3D3;
+$grey:#465362;
+$white:#ffffff;
+$warm:#502C4A;
+$warm2:#a7495c;
+$black: black;
+$shadow: 0px 0px 20px rgba(black,.5);
+$shadow2: 0px 0px 20px rgba(black,.9);
+$quick:.5s;
+
+.container{
+  background:white
+}
+.fa-arrow-left{
+  font-size: 2em;
+}
+.add-form{
+  ul{
+    margin-bottom: -10px;//to bring time picker up
+  }
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width:100%;
+  padding: 10px 10px;
+  .title{
+    text-align: center;
+  }
+  .categorys{
+    input[type=radio]{
+     display: none;
+    &:checked + .category-red{
+        animation: pulse-red 5s infinite;
+    }
+    &:checked + .category-green{
+        animation: pulse-green 5s infinite;
+    }
+    &:checked + .category-yellow{
+        animation: pulse-yellow 5s infinite;
+    }
+    }
+    display: flex;
+    justify-content: center;
+    position: relative;
+  .category{
+    position: initial;
+    cursor: pointer;
+    top: -5px;
+    width: 25px;
+    height: 25px;
+    &-red{
+
+      animation: none;
+    }
+    &-green{
+
+      animation: none;
+
+    }
+    &-yellow{
+
+      animation: none;
+    }
+  }
+
+  }
+  li{
+    margin-right: 2em;
+    margin-left: 2em;
+    margin-top: 1em;
+    list-style: none;
+  }
+
+.time{
+
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+}
+}
+.task-info{
+color: rgba($black,.7);
+  display: inline-block;
+  background: none;
+  border: none;
+}

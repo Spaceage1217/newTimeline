@@ -1,0 +1,49 @@
+<div class="container">
+<div class="snapshot">
+<div class="task">
+    <span class="category"></span>
+  <div class="task-options">
+    <!--<div class="task-options-delete"><i class="fa fa-trash-o" aria-hidden="true"></i>
+    </div>-->
+    <!-- ***************TO DO:move addTask function to a different page and use forms***********-->
+      <div class="task-options-edit"><i  class="fa fa-info-circle" aria-hidden="true"></i></div>
+  <a routerLink="/add" class="task-add-button"><i class="fa fa-plus"  aria-hidden="true"></i></a>
+
+    <!--<div class="task-options-complete"> <i class="fa fa-check" aria-hidden="true"></i></div>-->
+    </div>
+    <ul id='time'>
+      <li id='hour' class="chart"  data-percent="100"><span>{{hour}} </span></li>
+      <li id='min' class="chart" data-percent="100"><span>{{minute}}</span></li>
+      <li id='second' class="chart" data-percent="100"><span>{{second}}</span></li>
+    </ul>
+
+    <div class="task-info">
+    <!--  <div class="task-info-button"><i  class="fa fa-info-circle" aria-hidden="true"></i></div>-->
+
+    <!--  <div  id='time' class="task-time" class="chart"  data-percent="75"></div>-->
+    <!--made the color on the class chart for now invisible till i figure out how to make it work properly
+        to change go and change it in the java script file index.js at the bottom-->
+
+
+      <p class="task-title">{{snapShot_name}}</p>
+    </div>
+   <i class="open fa fa-chevron-down" aria-hidden="true"></i>
+</div>
+
+</div>
+
+<ul  id="timeline">
+  <li *ngFor="let tasks of tasks; let i=index" (click)="showSnap(i)"  class="timeline-tab">
+    <div class="time">{{tasks.start.getHours()}}:{{tasks.start.getMinutes()}} {{tasks.meridiem}}- <br> {{tasks.end.getHours()}}:{{tasks.end.getMinutes()}} {{tasks.meridiem}}</div>
+    <div class="category" [ngClass] = "{'category-red': tasks.category == 1,'category-green': tasks.category == 2, 'category-yellow': tasks.category == 3}" ></div>
+    <div class="timeline-tab-info">
+      <p>{{tasks.name}}</p>
+    </div>
+  </li>
+
+
+</ul>
+
+
+
+</div>
