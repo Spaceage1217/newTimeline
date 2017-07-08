@@ -30,9 +30,9 @@
     <div class="time">{{task.start | date: 'shortTime'}} - <br> {{task.end | date: 'shortTime'}}</div>
     <div class="category" [ngClass] = "{'category-red': task.category == 1,'category-green': task.category == 2, 'category-yellow': task.category == 3}"></div>
     <div [ngClass]="{'line-through': task.finished == true}" class="timeline-tab-info">
-      <p class="task-name">{{task.name | shortString: 10}}</p>
+      <p class="task-name">{{task.name | shortString: 15}}</p>
       <br>
-      <p class="task-discription">{{task.discription}}</p>
+      <!--<p class="task-discription">{{task.discription | shortString: 15}}</p>  try to find a better way to format discription-->
     </div>
 
   </li>

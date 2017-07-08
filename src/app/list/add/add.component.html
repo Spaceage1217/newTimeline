@@ -4,10 +4,10 @@
   <form [formGroup]="addTaskForm">
       <h4 class="title">What are we doing?</h4>
   <div class="form-group">
-    <input type="text" formControlName="title"  [(ngModel)]="title" name="title" class="form-control" id="newTask" placeholder="Title">
+    <input type="text" formControlName="title"   name="title" class="form-control" id="newTask" placeholder="Title">
   </div>
   <div class="form-group">
-    <textarea id="discription" formControlName="discription"  [(ngModel)]="discription" name="discription" class="form-control" name="name" rows="3" cols="80" placeholder="Describe it!"></textarea>
+    <textarea id="discription" formControlName="discription"   name="discription" class="form-control" name="name" rows="3" cols="80" placeholder="Describe it!"></textarea>
   </div>
   <div class="form-group">
         <h4 class="title" >How important is it?
@@ -22,15 +22,15 @@
     <ul class="categorys">
 
       <li>
-         <input type="radio" formControlName="category" [(ngModel)]="category"   id="category-1" name="category" value="1">
+         <input type="radio" formControlName="category"  id="category-1" name="category" value="1">
          <label for="category-1" class="category category-red" ></label>
       </li>
       <li>
-         <input type="radio" formControlName="category"  [(ngModel)]="category"  id="category-2" value="2" name="category">
+         <input type="radio" formControlName="category"   id="category-2" value="2" name="category">
          <label for="category-2"  class="category category-green"></label>
       </li>
       <li>
-         <input type="radio" formControlName="category"  [(ngModel)]="category" id="category-3" value="3" name="category">
+         <input type="radio" formControlName="category"  id="category-3" value="3" name="category">
          <label for="category-3"  class="category category-yellow"></label>
           </li>
     </ul>
