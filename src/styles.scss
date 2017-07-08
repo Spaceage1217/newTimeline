@@ -33,45 +33,42 @@ body {
    }
  }
 
- //for circle clock plugin
  ul{
    padding:0;
  }
- .chart{
-text-shadow: $shadow2;
- display: inline-block;
-  width: 70px;
-  height: 70px;
-  margin: 0 5px;
-  vertical-align: top;
-  position: relative;
-  box-sizing: border-box;
-  padding-top: 22px;
+ //line through for list items.
+ //will leave up here incase I use styles for other components.
 
-  span{
-    display: block;
-    font-size: 1em;
-    font-weight: normal;
-  }
-  canvas {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  top: 0;
-}
-
+ .line-through p{
+   font-style:italic;
+   position: relative;
+   color: $light-grey;
  }
+ .line-through p::after{
+   content: '';
+   position: absolute;
+   top: 50%;
+   left:0;
+    transform:  translateY(-50%);
+   height: 5%;
+   background: rgba($grey,.5);
+   animation: line-through 1s ;
+    animation-fill-mode: forwards;
+ }
+
     #time{
-      font-family: 'Orbitron', sans-serif;
-      margin-bottom: 0;
+      li{
+        list-style: none;
+      }
+      display: flex;
+      justify-content: space-around;
+
     }
  //////end of circles for time
 
 .container {
   cursor: pointer;
-  background: rgba(white ,.1);
+  background: rgba(white ,1);
   margin: 0 auto;
   width: 100%;
   max-width: 320px;
@@ -82,8 +79,10 @@ text-shadow: $shadow2;
   overflow: hidden;
   -webkit-transform: scale(1);
   padding: 0;
-
 }
+.red{background:   rgba($red,1) !important}
+.green{background: rgba($green,1)!important}
+.yellow{background: rgba($yellow,1)!important}
 
 .snapshot{
   text-align: left;
@@ -91,7 +90,11 @@ text-shadow: $shadow2;
   padding: .5em 1em;
   width: 100%;
  background: /* top, transparent red, faked with gradient */
-  linear-gradient( rgba($grey, 1), rgba($grey, .9) ), /* bottom, image */
+  -webkit-linear-gradient(rgba($grey, 1), rgba($grey, .9));
+ background: /* top, transparent red, faked with gradient */
+  -o-linear-gradient(rgba($grey, 1), rgba($grey, .9));
+ background: /* top, transparent red, faked with gradient */
+  linear-gradient(rgba($grey, 1), rgba($grey, .9)); /* bottom, image */
 
 /*add imge here or svg*/;
   //might not use
@@ -120,7 +123,6 @@ text-shadow: $shadow2;
     border-radius: none;
     padding: 0;
     position: relative;
-    //top: -25px;
     transition: .5s;
   }
   .task-time{
@@ -158,7 +160,7 @@ text-shadow: $shadow2;
       height: 80px;
       width: 80px;
       font-size: 2.5em;
-    //  background: $grey;
+
       border-radius: 100%
     }
     }
@@ -221,8 +223,7 @@ text-shadow: $shadow2;
     }
     &-edit{
     color: rgba($white,.7);
-    i{//border: 2px solid $yellow;
-      }
+
   }
     &-complete{
       color: $green;
@@ -266,7 +267,14 @@ text-shadow: $shadow2;
   .timeline-tab{
       display: flex;
       padding-top: 2em;
-     border-bottom: 1px solid rgba($light-grey, .3);
+      //margin-bottom: -1em;
+      border-bottom: 1px solid rgba($light-grey, .3);
+      &-info p{
+        display: inline-block;
+      }
+      .task-name {
+        text-transform: capitalize;
+      }
     }
   .time{
     color: $light-grey;
@@ -285,7 +293,7 @@ text-shadow: $shadow2;
 
 }
 //left only position of catogerys specific to the time line in the time line timeline-tab
-//oonly stylings of catogery are here
+//only stylings of catogery are here
 .category{
   width: 15px;
   height: 15px;
@@ -353,5 +361,14 @@ text-shadow: $shadow2;
   }
   100% {
     box-shadow: 0px 0px 0px rgba($grey, 0)
+  }
+}
+@keyframes line-through {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+  width: 100%;
   }
 }

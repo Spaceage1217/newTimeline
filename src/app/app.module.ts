@@ -1,6 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormsModule,
+  FormGroup,
+  FormControl,
+  Validator,
+  FormBuilder
+}from '@angular/forms'
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -16,6 +23,8 @@ import { TimepickerModule } from 'ngx-bootstrap';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
+import {ShortString} from "./shared/shortString.pipe";
+
 
 
 @NgModule({
@@ -23,10 +32,12 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     AppComponent,
     ListComponent,
     AddComponent,
+    ShortString,
 
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,

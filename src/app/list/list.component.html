@@ -1,5 +1,5 @@
 <div class="container">
-<div class="snapshot">
+<div class="snapshot" [ngClass] = "{'red': snapShot_background == 1,'green': snapShot_background == 2, 'yellow': snapShot_background == 3}">
 <div class="task">
     <span class="category"></span>
   <div class="task-options">
@@ -12,19 +12,12 @@
     <!--<div class="task-options-complete"> <i class="fa fa-check" aria-hidden="true"></i></div>-->
     </div>
     <ul id='time'>
-      <li id='hour' class="chart"  data-percent="100"><span>{{hour}} </span></li>
-      <li id='min' class="chart" data-percent="100"><span>{{minute}}</span></li>
-      <li id='second' class="chart" data-percent="100"><span>{{second}}</span></li>
+      <li id='hour'><span>{{hour}} </span></li>
+      <li id='min' ><span>{{minute}}</span></li>
+      <li id='second'><span>{{second}}</span></li>
     </ul>
 
-    <div class="task-info">
-    <!--  <div class="task-info-button"><i  class="fa fa-info-circle" aria-hidden="true"></i></div>-->
-
-    <!--  <div  id='time' class="task-time" class="chart"  data-percent="75"></div>-->
-    <!--made the color on the class chart for now invisible till i figure out how to make it work properly
-        to change go and change it in the java script file index.js at the bottom-->
-
-
+    <div class="task-info" >
       <p class="task-title">{{snapShot_name}}</p>
     </div>
    <i class="open fa fa-chevron-down" aria-hidden="true"></i>
@@ -33,12 +26,15 @@
 </div>
 
 <ul  id="timeline">
-  <li *ngFor="let tasks of tasks; let i=index" (click)="showSnap(i)"  class="timeline-tab">
-    <div class="time">{{tasks.start.getHours()}}:{{tasks.start.getMinutes()}} {{tasks.meridiem}}- <br> {{tasks.end.getHours()}}:{{tasks.end.getMinutes()}} {{tasks.meridiem}}</div>
-    <div class="category" [ngClass] = "{'category-red': tasks.category == 1,'category-green': tasks.category == 2, 'category-yellow': tasks.category == 3}" ></div>
-    <div class="timeline-tab-info">
-      <p>{{tasks.name}}</p>
+  <li *ngFor="let task of tasks; let i=index" (click)="showSnap(i)"  class="timeline-tab">
+    <div class="time">{{task.start | date: 'shortTime'}} - <br> {{task.end | date: 'shortTime'}}</div>
+    <div class="category" [ngClass] = "{'category-red': task.category == 1,'category-green': task.category == 2, 'category-yellow': task.category == 3}"></div>
+    <div [ngClass]="{'line-through': task.finished == true}" class="timeline-tab-info">
+      <p class="task-name">{{task.name | shortString: 10}}</p>
+      <br>
+      <p class="task-discription">{{task.discription}}</p>
     </div>
+
   </li>
 
 

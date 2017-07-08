@@ -15,7 +15,13 @@ export class TaskService {
   }
 
 addTask(newTask:task){
-   SAVED_TASKS.push(newTask)
+  //
+   newTask.start.setSeconds(0);
+   newTask.end.setSeconds(0);// needed to calibrate time right.
+   SAVED_TASKS.push(newTask);
+   SAVED_TASKS.sort((a,b)=>{
+        return new Date(a.start).getTime() - new Date(b.start).getTime();
+   });
 }
 
 
