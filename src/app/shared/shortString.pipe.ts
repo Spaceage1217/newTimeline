@@ -8,7 +8,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({name: 'shortString'})
 export class ShortString implements PipeTransform {
   transform(value: any, length: number): string {
-    if(value.length==undefined){return ""};
+    if(!value){return ""};// if null return an empty string.
     console.log('expected new string '+value.slice(0,length)+'...');
     return (value.length>14)?value.slice(0,length)+'...': value;
   }

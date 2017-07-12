@@ -26,26 +26,25 @@ export class AddComponent implements OnInit {
 
   constructor(private _taskService:TaskService) {}
 
-  addTime()
+  onSubmit()
   {
-    let current: Date = new Date();
-    let started: boolean;
-    let finished: boolean;
-    (this.addTaskForm.value.time.start.getTime() < current.getTime())?started=true:started=false;
-    (this.addTaskForm.value.time.end.getTime() < current.getTime())?finished=true:finished=false;
-    console.log("FROM THE ADD COMPONENT IT EVALUATES THE ALARM STARTED AS... "+ started);
-      console.log("FROM THE ADD COMPONENT IT EVALUATES THE ALARM FINISHED AS... "+ finished);
+    console.log(JSON.stringify(this.addTaskForm.value));
+    if(!this.addTaskForm.value.time.start){this.addTaskForm.value.time.start= new Date();}// if nothing is selected for start or end then select the curent time for star or end
+    if(!this.addTaskForm.value.time.end){this.addTaskForm.value.time.end= new Date();}
+    
     this.task = {
       "name":this.addTaskForm.value.title,
-      "discription":this.addTaskForm.value. discription,
+      "discription":this.addTaskForm.value.discription,
       "start": this.addTaskForm.value.time.start,
       "end": this.addTaskForm.value.time.end,
       "category":this.addTaskForm.value.category,
-      "started": started,
-      "finished": finished,
+      "started": false,
+      "finished": false,
     }
+    console.log(this.task.start);
     console.log(JSON.stringify(this.addTaskForm.value));
     this._taskService.addTask(this.task);
+    this.addTaskForm.reset();
 
   }
   ngOnInit() {

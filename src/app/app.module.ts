@@ -16,6 +16,9 @@ import { ListComponent } from './list/list.component';
 import {AddComponent} from './list/add/add.component';
 
 import{TaskService} from './services/task.service';
+import{AuthenticationService } from './services/authentication.service';
+import{AppointmentService} from './services/appointment.service';
+
 
 
 import { AlertModule } from 'ngx-bootstrap';
@@ -46,7 +49,7 @@ import {ShortString} from "./shared/shortString.pipe";
     TooltipModule.forRoot(),
 
   ],
-  providers: [TaskService],
+  providers: [TaskService,AuthenticationService,AppointmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

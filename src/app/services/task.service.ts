@@ -15,7 +15,9 @@ export class TaskService {
   }
 
 addTask(newTask:task){
-  //
+  let current = new Date();
+  (newTask.start.getTime() < current.getTime())?newTask.started=true:newTask.started=false;
+  (newTask.end.getTime() < current.getTime())?newTask.finished=true:newTask.finished=false;
    newTask.start.setSeconds(0);
    newTask.end.setSeconds(0);// needed to calibrate time right.
    SAVED_TASKS.push(newTask);

@@ -2,7 +2,7 @@ import {task} from './task.model';
 
 
 export const SAVED_TASKS:task[] =[
- {
+ /*{
     "name":" Finish TL",
     "discription": "working on application",
     "start": setDate(),
@@ -37,7 +37,7 @@ export const SAVED_TASKS:task[] =[
        "category":2,
        "started": true,
        "finished": true,
-     },
+     },*/
 
 ]
 

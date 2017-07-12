@@ -1,7 +1,7 @@
 <div class="container">
 <div class="add-form">
   <a routerLink="/" ><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
-  <form [formGroup]="addTaskForm">
+  <form [formGroup]="addTaskForm" >
       <h4 class="title">What are we doing?</h4>
   <div class="form-group">
     <input type="text" formControlName="title"   name="title" class="form-control" id="newTask" placeholder="Title">
@@ -38,7 +38,7 @@
   <div class="time" formGroupName="time">
     <timepicker  formControlName="start"[minuteStep]="1" name="timePicker"></timepicker>
     <timepicker formControlName="end"  [minuteStep]="1" name="timePicker"></timepicker>
-   <button routerLink="/"  type="submit" class="btn btn-default" (click)="addTime()">Submit</button>
+   <button routerLink="/"  type="submit" class="btn btn-default" (click)="onSubmit()">Submit</button>
   </div>
 
 

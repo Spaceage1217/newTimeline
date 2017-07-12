@@ -1,15 +1,22 @@
+<!--<script async defer src="https://apis.google.com/js/api.js"
+    onload="this.onload=function(){};handleClientLoad()"
+    onreadystatechange="if (this.readyState === 'complete') this.onload()">
+  </script>-->
 <div class="container">
-<div class="snapshot" [ngClass] = "{'red': snapShot_background == 1,'green': snapShot_background == 2, 'yellow': snapShot_background == 3}">
+<div class="snapshot" [ngClass] = "{'red': snapShot.background == 1,'green': snapShot.background == 2, 'yellow': snapShot.background == 3}" >
 <div class="task">
     <span class="category"></span>
   <div class="task-options">
     <!--<div class="task-options-delete"><i class="fa fa-trash-o" aria-hidden="true"></i>
     </div>-->
     <!-- ***************TO DO:move addTask function to a different page and use forms***********-->
-      <div class="task-options-edit"><i  class="fa fa-info-circle" aria-hidden="true"></i></div>
+      <div class="task-options-edit"  (click)="_auth.login()"><i  class="fa fa-info-circle" aria-hidden="true"></i></div>
   <a routerLink="/add" class="task-add-button"><i class="fa fa-plus"  aria-hidden="true"></i></a>
 
     <!--<div class="task-options-complete"> <i class="fa fa-check" aria-hidden="true"></i></div>-->
+    </div>
+    <div class="task-info timeline-tab-info" [ngClass]="{'line-through': snapShot.progress.finished == true}" >
+      <p class="task-title" >{{snapShot.name}}</p>
     </div>
     <ul id='time'>
       <li id='hour'><span>{{hour}} </span></li>
@@ -17,9 +24,14 @@
       <li id='second'><span>{{second}}</span></li>
     </ul>
 
-    <div class="task-info" >
-      <p class="task-title">{{snapShot_name}}</p>
-    </div>
+
+     <div *ngIf="snapShot.progress.started==true"class="progress-1">
+       <div class="progress-1-bar" [ngStyle]="{'animation':'progress '+ distance+'s ease-in-out '}">
+
+         <div class="progress-1-shadow" [ngStyle]="{'animation':'progress '+ distance+'s '}" ></div>
+
+       </div>
+     </div>
    <i class="open fa fa-chevron-down" aria-hidden="true"></i>
 </div>
 
