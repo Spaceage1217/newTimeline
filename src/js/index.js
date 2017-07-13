@@ -1,4 +1,4 @@
-jQuery( document ).ready(function( $ ) {
+/*jQuery( document ).ready(function( $ ) {
   $('.open').click(function(){
 
     $('.snapshot').toggleClass('open-snap');
@@ -8,7 +8,7 @@ jQuery( document ).ready(function( $ ) {
 /*  setTimeout(function() {
         $('.chart').data('easyPieChart').update(40);
     }, 5000);*/
-});
+//});
 /**!
  * easyPieChart
  * Lightweight plugin to render simple, animated and retina optimized pie charts

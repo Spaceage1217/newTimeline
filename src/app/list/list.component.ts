@@ -26,6 +26,7 @@ export class ListComponent implements OnInit {
       started: false,
       finished: false,
     },
+    open: false,
   }
   current: Date;
   appointments: Array<string>;
@@ -109,9 +110,11 @@ export class ListComponent implements OnInit {
 
 
 
- showSnap( index: number){
-    this.snapShot.name= this.tasks[index].name;
-
+ toggleSnap(){
+   //logic as far as css is kind of jacked up and goes the other way you would think...but as is it works.
+   //when snapShot.open = false then the snap shot takes up half the screen.
+   //and the timeline 'line' is in full view. and vice versa when snapShot.open is true.
+    (this.snapShot.open)?this.snapShot.open=false:this.snapShot.open=true;
   }
 
 

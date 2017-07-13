@@ -3,15 +3,12 @@
     onreadystatechange="if (this.readyState === 'complete') this.onload()">
   </script>-->
 <div class="container">
-<div class="snapshot" [ngClass] = "{'red': snapShot.background == 1,'green': snapShot.background == 2, 'yellow': snapShot.background == 3}" >
+<div class="snapshot" [ngClass] = "{'red': snapShot.background == 1,'green': snapShot.background == 2, 'yellow': snapShot.background == 3, 'open-snap': snapShot.open==true}" >
 <div class="task">
     <span class="category"></span>
   <div class="task-options">
-    <!--<div class="task-options-delete"><i class="fa fa-trash-o" aria-hidden="true"></i>
-    </div>-->
-    <!-- ***************TO DO:move addTask function to a different page and use forms***********-->
       <div class="task-options-edit"  (click)="_auth.login()"><i  class="fa fa-info-circle" aria-hidden="true"></i></div>
-  <a routerLink="/add" class="task-add-button"><i class="fa fa-plus"  aria-hidden="true"></i></a>
+      <a routerLink="/add" class="task-add-button"><i class="fa fa-plus"  aria-hidden="true"></i></a>
 
     <!--<div class="task-options-complete"> <i class="fa fa-check" aria-hidden="true"></i></div>-->
     </div>
@@ -32,12 +29,12 @@
 
        </div>
      </div>
-   <i class="open fa fa-chevron-down" aria-hidden="true"></i>
+   <i class="open fa fa-chevron-down" (click)=toggleSnap() aria-hidden="true"></i>
 </div>
 
 </div>
 
-<ul  id="timeline">
+<ul  id="timeline" [ngClass]="{'close-timeline':snapShot.open==true }">
   <li *ngFor="let task of tasks; let i=index" (click)="showSnap(i)"  class="timeline-tab">
     <div class="time">{{task.start | date: 'shortTime'}} - <br> {{task.end | date: 'shortTime'}}</div>
     <div class="category" [ngClass] = "{'category-red': task.category == 1,'category-green': task.category == 2, 'category-yellow': task.category == 3}"></div>
