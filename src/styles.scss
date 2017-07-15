@@ -173,8 +173,9 @@ a:link,a:visited,a:hover,a:active{
        height: 1.5em;
        background: linear-gradient(to bottom, rgba($white,.2), transparent);
        top: 100%;
-       transform: skew(45deg);
-       transform-origin: 50% 50%;
+       left:0;
+       transform: skew(25deg);
+       transform-origin: top;
        animation-fill-mode: forwards;
      }
   }
@@ -285,7 +286,7 @@ a:link,a:visited,a:hover,a:active{
       background: $white;
       color: $grey;
       i{color: $grey;}
-      box-shadow: $shadow-light;
+      //box-shadow: $shadow-light;
       width: 40px;
       height: 40px;
       border-radius: 100%;

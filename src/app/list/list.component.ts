@@ -99,7 +99,7 @@ export class ListComponent implements OnInit {
                     snapShot.background=0;
                     that.hour ="."; that.minute="."; that.second=".";
                     clearInterval(time);
-                  },1000)
+                  },2000)
 
               };
                 }, 1000)
