@@ -12,8 +12,10 @@ $white:#ffffff;
 $warm:#502C4A;
 $warm2:#a7495c;
 $black: black;
-$shadow: 0px 0px 20px rgba(black,.5);
-$shadow2: 0px 0px 20px rgba(black,.9);
+$shadow: 0px 0px 20px rgba($black,.5);
+$shadow2: 0px 0px 20px rgba($black,.9);
+$shadow-light: 0px 0px 10px rgba($black,.4);
+$shadow-progress:-2px 7px 136px -0px rgba($white,.5);
 $quick:.5s;
 
 $progress-width: 24em;
@@ -81,7 +83,8 @@ a:link,a:visited,a:hover,a:active{
         list-style: none;
       }
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
+      width: 10rem;
 
     }
  //////end of circles for time
@@ -154,7 +157,7 @@ a:link,a:visited,a:hover,a:active{
 
   .progress-1{
     border-radius: none;
-     height: .45rem;
+     height: 1.45rem;
      background: $grey;
      position: relative;
      &-bar{
@@ -162,7 +165,7 @@ a:link,a:visited,a:hover,a:active{
        height: inherit;
        background: white;
        animation-fill-mode: forwards;
-       box-shadow: $shadow;
+       //box-shadow: $shadow-progress;
 
      }
      &-shadow{
@@ -171,9 +174,8 @@ a:link,a:visited,a:hover,a:active{
        background: linear-gradient(to bottom, rgba($white,.2), transparent);
        top: 100%;
        transform: skew(45deg);
-        transform-origin: 0 0;
+       transform-origin: 50% 50%;
        animation-fill-mode: forwards;
-
      }
   }
 
@@ -224,62 +226,70 @@ a:link,a:visited,a:hover,a:active{
 
 
 .task{
-   transition: $quick;
-    padding-top:22em;
+    transition: $quick;
+    padding-top:27em;//to position snapshot for now
     text-transform: uppercase;
-    text-align: center;
+    text-align: left;
     color: $white;
-
-  &-info-button{
-    font-size: 2em;
-    color: rgba($white,.7);
-    display: none;
-  }
-  &-info{
+  &-info-snap-shot{
+    position: relative;
     margin: 0;
     padding: 0;
-
+    line-height: .75em;
   }
-   &-title{
-      font-size: 1.8em;
-      font-style: italic;
-    }
+  &-label{
+    font-size: .70em;
+    font-weight: 200;
+  }
+  &-title{
+     display: flex;
+     justify-content: space-between;
+     align-items: baseline;
+     width:auto;
+     font-size: 1.8em;
+     font-weight: bold;
+     position: relative;
+     .task-title-line{
+       /*position:relative;
+       z-index: -9999;
+       flex-grow: -1;
+       width: 70%;
+       min-width: 25%;
+       height: .05em;
+       transform: skew(-45deg) translateY(4px);
+       background: $light-grey;*/
+     }
+   }
+  &-info-button{
+    font-size: .75em;
+    color: rgba($white,1);
+    //margin-right: 20px;
+  }
   &-time{
-  //  transition: $quick;
     margin-top: .5em;
     padding: 0;
     font-size: 1.5em;
   }
   &-options{
-   transition: $quick;
     display: flex;
-  justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-
+    height: 4em;
+    font-size: 1.2em;
+    align-items: flex-end;
     margin-bottom: 0em;
-    i{
-      line-height: 1.8em;
-      height: 65px;
-      width: 65px;
-      font-size: 2em;
-      //background: $grey;
+    &-add-button, &-remaining {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $white;
+      color: $grey;
+      i{color: $grey;}
+      box-shadow: $shadow-light;
+      width: 40px;
+      height: 40px;
       border-radius: 100%;
-      text-shadow: $shadow;
-    }
-    &-delete{
-      color: $red;
-      i{
-       border: 2px solid $red;
-      }
-    }
-    &-edit{
-    color: rgba($white,.7);
-
-  }
-    &-complete{
-      color: $green;
-       i{border: 2px solid $green;
-      }
+      border: .2px solid rgba($black,.2);
     }
   }
 }
@@ -320,7 +330,7 @@ a:link,a:visited,a:hover,a:active{
       padding-top: 2em;
       padding-bottom: 1em;
       border-bottom: 1px solid rgba($light-grey, .3);
-      &-info p{
+      &-info p , .task-info p{
         display: inline-block;
       }
       .task-name {

@@ -1,54 +1,42 @@
-<!--<script async defer src="https://apis.google.com/js/api.js"
-    onload="this.onload=function(){};handleClientLoad()"
-    onreadystatechange="if (this.readyState === 'complete') this.onload()">
-  </script>-->
+
 <div class="container">
-<div class="snapshot" [ngClass] = "{'red': snapShot.background == 1,'green': snapShot.background == 2, 'yellow': snapShot.background == 3, 'open-snap': snapShot.open==true}" >
-<div class="task">
-    <span class="category"></span>
-  <div class="task-options">
-      <div class="task-options-edit"  (click)="_auth.login()"><i  class="fa fa-info-circle" aria-hidden="true"></i></div>
-      <a routerLink="/add" class="task-add-button"><i class="fa fa-plus"  aria-hidden="true"></i></a>
 
-    <!--<div class="task-options-complete"> <i class="fa fa-check" aria-hidden="true"></i></div>-->
+  <div class="snapshot" [ngClass] = "{'red': snapShot.background == 1,'green': snapShot.background == 2, 'yellow': snapShot.background == 3, 'open-snap': snapShot.open==true}" >
+    <div class="task">
+        <div class="task-info-snap-shot " [ngClass]="{'line-through': snapShot.progress.finished == true}" >
+          <p class="task-label">current</p>
+          <div class="task-title">
+            <p>{{snapShot.name  | shortString: 15}}</p>
+            <div class="task-title-line"></div>
+            <span class="task-info-button"><i class="fa fa-info-circle" aria-hidden="true"></i></span>
+          </div>
+        </div>
+        <ul id='time'>
+          <li id='hour'><span>{{hour}} </span></li>
+          <li id='min' ><span>{{minute}}</span></li>
+          <li id='second'><span>{{second}}</span></li>
+        </ul>
+         <!--<div *ngIf="snapShot.progress.started==true"class="progress-1">-->
+         <div class="progress-1">
+           <div class="progress-1-bar" [ngStyle]="{'animation':'progress '+ distance+'s ease-in-out '}">
+             <div class="progress-1-shadow" [ngStyle]="{'animation':'progress '+ distance+'s '}" ></div>
+           </div>
+         </div>
+         <div class="task-options">
+             <span class="task-options-remaining">{{snapShot.remaining}}</span>
+             <a routerLink="/add" class="task-options-add-button"><i class="fa fa-plus"  aria-hidden="true"></i></a>
+         </div>
     </div>
-    <div class="task-info timeline-tab-info" [ngClass]="{'line-through': snapShot.progress.finished == true}" >
-      <p class="task-title" >{{snapShot.name}}</p>
-    </div>
-    <ul id='time'>
-      <li id='hour'><span>{{hour}} </span></li>
-      <li id='min' ><span>{{minute}}</span></li>
-      <li id='second'><span>{{second}}</span></li>
-    </ul>
+  </div>
 
-
-     <div *ngIf="snapShot.progress.started==true"class="progress-1">
-       <div class="progress-1-bar" [ngStyle]="{'animation':'progress '+ distance+'s ease-in-out '}">
-
-         <div class="progress-1-shadow" [ngStyle]="{'animation':'progress '+ distance+'s '}" ></div>
-
-       </div>
-     </div>
-   <i class="open fa fa-chevron-down" (click)=toggleSnap() aria-hidden="true"></i>
-</div>
-
-</div>
-
-<ul  id="timeline" [ngClass]="{'close-timeline':snapShot.open==true }">
-  <li *ngFor="let task of tasks; let i=index" (click)="showSnap(i)"  class="timeline-tab">
-    <div class="time">{{task.start | date: 'shortTime'}} - <br> {{task.end | date: 'shortTime'}}</div>
-    <div class="category" [ngClass] = "{'category-red': task.category == 1,'category-green': task.category == 2, 'category-yellow': task.category == 3}"></div>
-    <div [ngClass]="{'line-through': task.finished == true}" class="timeline-tab-info">
-      <p class="task-name">{{task.name | shortString: 15}}</p>
-      <br>
-      <!--<p class="task-discription">{{task.discription | shortString: 15}}</p>  try to find a better way to format discription-->
-    </div>
-
-  </li>
-
-
-</ul>
-
-
+  <ul  id="timeline" [ngClass]="{'close-timeline':snapShot.open==true }">
+    <li *ngFor="let task of tasks; let i=index" (click)="showSnap(i)"  class="timeline-tab">
+      <div class="time">{{task.start | date: 'shortTime'}} - <br> {{task.end | date: 'shortTime'}}</div>
+      <div class="category" [ngClass] = "{'category-red': task.category == 1,'category-green': task.category == 2, 'category-yellow': task.category == 3}"></div>
+      <div [ngClass]="{'line-through': task.finished == true}" class="timeline-tab-info">
+        <p class="task-name">{{task.name | shortString: 15}}</p>
+      </div>
+    </li>
+  </ul>
 
 </div>

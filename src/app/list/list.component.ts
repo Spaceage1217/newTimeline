@@ -20,13 +20,14 @@ export class ListComponent implements OnInit {
   second:any="." ;
   //Usefull object for displaying properties of taskt o dom.
   snapShot={
-    name:'Start',
+    name:'Start  ',
     background:0,
     progress:{
       started: false,
       finished: false,
     },
     open: false,
+    remaining: 0,
   }
   current: Date;
   appointments: Array<string>;
