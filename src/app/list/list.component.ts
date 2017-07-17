@@ -56,6 +56,7 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.tasks = this._taskService.getTasks();//get tasks from service
     this.totalTasks = this._taskService.getTotalTasks(this.tasks);//return total tasks in tasks array
+    this.snapShot.remaining=this._taskService.getRemainingTasks();
     this.startAlarm();
   }
 
@@ -91,16 +92,13 @@ export class ListComponent implements OnInit {
                     that.second = Math.floor((distance % (1000 * 60)) / 1000)+"S";
 
                 }
-                else if(alarm.finished){
+                else if(alarm.finished&&(!alarm.started)){
                   // display FIN when finished
-                  //delaly the reset by 1 second so animation can show
-                  setTimeout(()=>{
                     snapShot.name="Done";
                     snapShot.background=0;
                     that.hour ="."; that.minute="."; that.second=".";
+                    that.snapShot.remaining=that._taskService.getRemainingTasks();//update tasks
                     clearInterval(time);
-                  },2000)
-
               };
                 }, 1000)
        })}

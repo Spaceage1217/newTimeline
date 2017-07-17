@@ -13,6 +13,14 @@ export class TaskService {
   getTotalTasks(allTasks:task[]){
     return allTasks.length;//return the number of all tasks.
   }
+  getRemainingTasks()
+  {
+    let completed =0;
+      SAVED_TASKS.forEach(
+        (task)=>{if(task.finished){completed +=1;}
+    });
+     return this.getTotalTasks(SAVED_TASKS)-completed;
+  }
 
 addTask(newTask:task){
   let current = new Date();

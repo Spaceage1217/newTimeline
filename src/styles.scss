@@ -12,10 +12,9 @@ $white:#ffffff;
 $warm:#502C4A;
 $warm2:#a7495c;
 $black: black;
-$shadow: 0px 0px 20px rgba($black,.5);
-$shadow2: 0px 0px 20px rgba($black,.9);
-$shadow-light: 0px 0px 10px rgba($black,.4);
-$shadow-progress:-2px 7px 136px -0px rgba($white,.5);
+$shadow: 0px 0px 20px rgba(black,.5);
+$shadow2: 0px 0px 20px rgba(black,.9);
+$shadow-progress:-2px 7px 136px -0px rgba(green,1);
 $quick:.5s;
 
 $progress-width: 24em;
@@ -46,6 +45,7 @@ body {
 }
 a:link,a:visited,a:hover,a:active{
   color: inherit !important;
+  text-decoration: none;
 }
 
  @media  (max-width:320px) {
@@ -60,24 +60,32 @@ a:link,a:visited,a:hover,a:active{
  //line through for list items.
  //will leave up here incase I use styles for other components.
 
- .line-through p{
-   font-style:italic;
-   position: relative;
-   color: $light-grey;
-   display: inline-block;
+ .line-through {
+   .task-name, .task-title{
+     font-style:italic;
+     position: relative;
+     color: $light-grey;
+     display: inline-block;
+   }
  }
- .line-through p::after{
-   content: '';
-   position: absolute;
-   top: 50%;
-   left:0;
-    transform:  translateY(-50%);
-   height: 5%;
-   background: rgba($grey,.5);
-   animation: line-through 1s ;
-    animation-fill-mode: forwards;
- }
-
+ .line-through {
+   .task-name::after, .task-title::after{
+     content: '';
+     position: absolute;
+     top: 50%;
+     left:0;
+     transform:  translateY(-50%);
+     height: 5%;
+     background: rgba($grey,.5);
+     animation: line-through 1s ;
+     animation-fill-mode: forwards;
+   }
+   .task-title::after{
+     top: 15%;
+     //transform:  translateY(-25%);
+     height: 5%;
+   }
+}
     #time{
       li{
         list-style: none;
@@ -135,7 +143,7 @@ a:link,a:visited,a:hover,a:active{
   transition: $quick;
   transform: translateY(-300px);
   z-index: 15;
-  height: 568px;
+  height: 625px;
 
   .open{
     text-shadow: $shadow;
@@ -170,13 +178,13 @@ a:link,a:visited,a:hover,a:active{
      }
      &-shadow{
        position: absolute;
-       height: 1.5em;
-       background: linear-gradient(to bottom, rgba($white,.2), transparent);
+       height: .5em;
+       background: linear-gradient(to bottom, rgba($white,.1), transparent);
        top: 100%;
-       left:0;
-       transform: skew(25deg);
-       transform-origin: top;
+       transform: skew(45deg);
+        transform-origin: 0 0;
        animation-fill-mode: forwards;
+
      }
   }
 
@@ -228,7 +236,7 @@ a:link,a:visited,a:hover,a:active{
 
 .task{
     transition: $quick;
-    padding-top:27em;//to position snapshot for now
+    padding-top:30em;//to position snapshot for now
     text-transform: uppercase;
     text-align: left;
     color: $white;
@@ -273,8 +281,10 @@ a:link,a:visited,a:hover,a:active{
   }
   &-options{
     display: flex;
+    //background: green;
     justify-content: space-around;
     align-items: center;
+    //margin-top: 4em;
     height: 4em;
     font-size: 1.2em;
     align-items: flex-end;
@@ -283,14 +293,10 @@ a:link,a:visited,a:hover,a:active{
       display: flex;
       align-items: center;
       justify-content: center;
-      background: $white;
-      color: $grey;
-      i{color: $grey;}
-      //box-shadow: $shadow-light;
+      background: $grey;
       width: 40px;
       height: 40px;
-      border-radius: 100%;
-      border: .2px solid rgba($black,.2);
+      border-radius: 10%;
     }
   }
 }

@@ -1,9 +1,9 @@
 
 <div class="container">
 
-  <div class="snapshot" [ngClass] = "{'red': snapShot.background == 1,'green': snapShot.background == 2, 'yellow': snapShot.background == 3, 'open-snap': snapShot.open==true}" >
+  <div class="snapshot"  [ngClass] = "{'red': snapShot.background == 1,'green': snapShot.background == 2, 'yellow': snapShot.background == 3, 'open-snap': snapShot.open==true}" >
     <div class="task">
-        <div class="task-info-snap-shot " [ngClass]="{'line-through': snapShot.progress.finished == true}" >
+        <div class="task-info-snap-shot " [ngClass]="{'line-through': snapShot.progress.finished == true}"  >
           <p class="task-label">current</p>
           <div class="task-title">
             <p>{{snapShot.name  | shortString: 15}}</p>
@@ -16,10 +16,12 @@
           <li id='min' ><span>{{minute}}</span></li>
           <li id='second'><span>{{second}}</span></li>
         </ul>
-         <!--<div *ngIf="snapShot.progress.started==true"class="progress-1">-->
+         <!--<div *ngIf="snapShot.progress.started==true"class="progress-1">
+           [ngClass] = "{'red': snapShot.background == 1,'green': snapShot.background == 2, 'yellow': snapShot.background == 3, 'open-snap': snapShot.open==true}"
+       -->
          <div class="progress-1">
-           <div class="progress-1-bar" [ngStyle]="{'animation':'progress '+ distance+'s ease-in-out '}">
-             <div class="progress-1-shadow" [ngStyle]="{'animation':'progress '+ distance+'s '}" ></div>
+           <div class="progress-1-bar" *ngIf="snapShot.progress.started==true" [ngStyle]="{'animation':'progress '+ distance+'s ease-in-out'}" >
+             <div class="progress-1-shadow" [ngStyle]="{'animation':'progress '+ distance+'s'}" ></div>
            </div>
          </div>
          <div class="task-options">
